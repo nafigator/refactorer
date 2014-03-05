@@ -12,13 +12,14 @@
 
 namespace Classes;
 use Iterator;
+use Countable;
 
 /**
  * Class Parser
  *
  * @author  Yancharuk Alexander <alex@itvault.info>
  */
-class Parser implements Iterator
+class Parser implements Iterator, Countable
 {
 	/**
 	 * @var array
@@ -28,22 +29,24 @@ class Parser implements Iterator
 	private $position;
 
 	/**
-	 * @param $path
+	 *
+	 * @param string $path
+	 * @param array $extensions
 	 */
-	public function __construct($path)
+	public function __construct($path, array $extensions)
 	{
 		$this->origin_path = $path;
 
 		if (is_file($path) && is_readable($path)) {
 			$this->path = [$path];
-		} elseif (is_dir($path) && is_readable($path)) {
+		} elseif (is_dir($path) && is_readable($path) && is_executable($path)) {
 			$iterator = new \RecursiveIteratorIterator(
 				new \RecursiveDirectoryIterator($path)
 			);
 
 			foreach($iterator as $value) {
 				/* @var \SplFileInfo $value */
-				if ('php' === $value->getExtension()) {
+				if (in_array($value->getExtension(), $extensions)) {
 					$this->path[] = $value->getRealPath();
 				}
 			}
@@ -59,10 +62,8 @@ class Parser implements Iterator
 	 */
 	public function current()
 	{
-		$code = file_get_contents($this->path[$this->position]);
-
+		$code   = file_get_contents($this->path[$this->position]);
 		$tokens = token_get_all($code);
-
 		$result = [];
 
 		foreach ($tokens as $token) {
@@ -112,7 +113,7 @@ class Parser implements Iterator
 	 */
 	public function key()
 	{
-		return $this->position;
+		return $this->path[$this->position];
 	}
 
 	/**
@@ -138,5 +139,20 @@ class Parser implements Iterator
 	public function rewind()
 	{
 		$this->position = 0;
+	}
+
+	/**
+	 * (PHP 5 &gt;= 5.1.0)<br/>
+	 * Count elements of an object
+	 *
+	 * @link http://php.net/manual/en/countable.count.php
+	 * @return int The custom count as an integer.
+	 *       </p>
+	 *       <p>
+	 *       The return value is cast to an integer.
+	 */
+	public function count()
+	{
+		return is_array($this->path) ? count($this->path) : 1;
 	}
 }

@@ -12,10 +12,6 @@
 
 namespace Application;
 
-use Classes\Analyzer;
-use Classes\Parser;
-use Veles\Application\Application;
-
 /**
  * Class RefApplication
  *
@@ -25,8 +21,9 @@ class RefApplication extends BaseApplication
 {
 	public static function run()
 	{
-		foreach (self::$parser as $tokens) {
-
+		var_dump(count(self::$parser));
+		foreach (self::$parser as $path => $tokens) {
+			var_dump($path);
 		}
 	}
 }

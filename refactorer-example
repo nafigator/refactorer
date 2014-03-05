@@ -47,7 +47,7 @@ EOT;
 
 /** @noinspection PhpIncludeInspection */
 $analyzer = new Analyzer(include $argv[1]);
-$parser   = new Parser($argv[2]);
+$parser   = new Parser($argv[2], ['php']);
 
 RefApplication::setParser($parser);
 RefApplication::setAnalyzer($analyzer);

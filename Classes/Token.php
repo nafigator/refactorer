@@ -124,4 +124,14 @@ class Token implements iToken
 	{
 		$this->content = $content;
 	}
+
+	/**
+	 * Return token name when Token cast as string
+	 *
+	 * @return string
+	 */
+	public function __toString()
+	{
+		return $this->getName();
+	}
 }
