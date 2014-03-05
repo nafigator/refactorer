@@ -11,6 +11,7 @@
  */
 
 namespace Application;
+use Veles\Tools\CliProgressBar;
 
 /**
  * Class RefApplication
@@ -21,9 +22,11 @@ class RefApplication extends BaseApplication
 {
 	public static function run()
 	{
-		var_dump(count(self::$parser));
+		$bar = new CliProgressBar(count(self::$parser));
+		$i   = 0;
+
 		foreach (self::$parser as $path => $tokens) {
-			var_dump($path);
+			$bar->update(++$i);
 		}
 	}
 }
