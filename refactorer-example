@@ -1,0 +1,54 @@
+#!/usr/bin/env php
+<?php
+/**
+ * Main script
+ *
+ * 1. Make copy of this file:
+ * cp refactorer-example refactorer
+ *
+ * 2. Modify local settings
+ *
+ * 3. Run script using command:
+ * ./refactorer <path to rules> <path to files>
+ *
+ * @file    refactorer-example
+ *
+ * PHP version 5.4+
+ *
+ * @author  Yancharuk Alexander <alex@itvault.info>
+ * @date    Tue Mar 4 15:46:40 2014
+ * @copyright The BSD 3-Clause License.
+ */
+
+use Veles\AutoLoader;
+use Application\RefApplication;
+use Classes\Analyzer;
+use Classes\Parser;
+
+define('BASE_PATH', realpath(__DIR__));
+
+setlocale(LC_ALL, 'ru_RU.utf8');
+date_default_timezone_set('Europe/Moscow');
+/** @noinspection PhpIncludeInspection */
+require 'lib/Veles/AutoLoader.php';
+AutoLoader::registerPath(BASE_PATH . '/lib');
+AutoLoader::init();
+
+if ($argc < 3) {
+	$error = <<<EOT
+	refactorer: missing parameters
+
+	USAGE: ./refactorer <path to rules> <path to files>
+
+EOT;
+
+	die($error);
+}
+
+/** @noinspection PhpIncludeInspection */
+$analyzer = new Analyzer(include $argv[1]);
+$parser   = new Parser($argv[2]);
+
+RefApplication::setParser($parser);
+RefApplication::setAnalyzer($analyzer);
+RefApplication::run();
