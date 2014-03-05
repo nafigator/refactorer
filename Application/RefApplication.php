@@ -21,47 +21,12 @@ use Veles\Application\Application;
  *
  * @author  Yancharuk Alexander <alex@itvault.info>
  */
-class RefApplication extends Application
+class RefApplication extends BaseApplication
 {
-	private static $parser;
-	private static $analyzer;
-
 	public static function run()
 	{
 		foreach (self::$parser as $tokens) {
 
 		}
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public static function getAnalyzer()
-	{
-		return self::$analyzer;
-	}
-
-	/**
-	 * @param mixed $analyzer
-	 */
-	public static function setAnalyzer($analyzer)
-	{
-		self::$analyzer = $analyzer;
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public static function getParser()
-	{
-		return self::$parser;
-	}
-
-	/**
-	 * @param mixed $parser
-	 */
-	public static function setParser($parser)
-	{
-		self::$parser = $parser;
 	}
 }
