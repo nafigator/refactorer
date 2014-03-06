@@ -25,7 +25,8 @@ class RefApplication extends BaseApplication
 		$bar = new CliProgressBar(count(self::$parser));
 		$i   = 0;
 
-		foreach (self::$parser as $path => $tokens) {
+		foreach (self::getParser() as $path => $tokens) {
+			self::getAnalyzer()->process($path, $tokens);
 			$bar->update(++$i);
 		}
 	}

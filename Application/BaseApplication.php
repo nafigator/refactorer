@@ -13,10 +13,14 @@
 namespace Application;
 
 use Veles\Application\Application;
+use Classes\Analyzer;
+use Classes\Parser;
 
 class BaseApplication extends Application
 {
+	/* @var Parser */
 	protected static $parser;
+	/* @var Analyzer */
 	protected static $analyzer;
 
 	/**
@@ -34,7 +38,7 @@ class BaseApplication extends Application
 	 *
 	 * @param mixed $analyzer
 	 */
-	public static function setAnalyzer($analyzer)
+	public static function setAnalyzer(Analyzer $analyzer)
 	{
 		self::$analyzer = $analyzer;
 	}
@@ -54,7 +58,7 @@ class BaseApplication extends Application
 	 *
 	 * @param mixed $parser
 	 */
-	public static function setParser($parser)
+	public static function setParser(Parser $parser)
 	{
 		self::$parser = $parser;
 	}

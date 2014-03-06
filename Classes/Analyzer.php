@@ -19,5 +19,8 @@ namespace Classes;
  */
 class Analyzer extends BaseAnalyzer
 {
-
+	public function process($path, array $tokens)
+	{
+		//TODO Analyze tokens
+	}
 }
