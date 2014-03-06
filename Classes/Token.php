@@ -67,16 +67,6 @@ class Token implements iToken
 	}
 
 	/**
-	 * Set token name
-	 *
-	 * @return string
-	 */
-	public function setName()
-	{
-		return $this->name;
-	}
-
-	/**
 	 * Resolve token name
 	 *
 	 * @param int $index
