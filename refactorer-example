@@ -49,6 +49,7 @@ EOT;
 $analyzer = new Analyzer(include $argv[1]);
 $parser   = new Parser($argv[2], ['php']);
 
-RefApplication::setParser($parser);
-RefApplication::setAnalyzer($analyzer);
-RefApplication::run();
+$app = new RefApplication();
+$app->setParser($parser);
+$app->setAnalyzer($analyzer);
+$app->run();

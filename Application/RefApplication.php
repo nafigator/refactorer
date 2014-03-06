@@ -20,13 +20,13 @@ use Veles\Tools\CliProgressBar;
  */
 class RefApplication extends BaseApplication
 {
-	public static function run()
+	public function run()
 	{
-		$bar = new CliProgressBar(count(self::$parser));
+		$bar = new CliProgressBar(count($this->getParser()));
 		$i   = 0;
 
-		foreach (self::getParser() as $path => $tokens) {
-			self::getAnalyzer()->process($path, $tokens);
+		foreach ($this->getParser() as $path => $tokens) {
+			$this->getAnalyzer()->process($path, $tokens);
 			$bar->update(++$i);
 		}
 	}
