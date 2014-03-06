@@ -73,4 +73,11 @@ interface iToken
 	 * @param string $content
 	 */
 	public function setContent($content);
+
+	/**
+	 * Return token name when Token cast as string
+	 *
+	 * @return string
+	 */
+	public function __toString();
 }

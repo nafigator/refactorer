@@ -109,7 +109,7 @@ class Parser implements Iterator, Countable
 	 * Return the key of the current element
 	 *
 	 * @link http://php.net/manual/en/iterator.key.php
-	 * @return mixed scalar on success, or null on failure.
+	 * @return string
 	 */
 	public function key()
 	{
