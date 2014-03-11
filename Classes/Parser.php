@@ -62,26 +62,7 @@ class Parser implements Iterator, Countable
 	 */
 	public function current()
 	{
-		$code   = file_get_contents($this->path[$this->position]);
-		$tokens = token_get_all($code);
-		$result = [];
-
-		foreach ($tokens as $token) {
-			$obj = new Token();
-			switch (true) {
-				case is_array($token):
-					$obj->setIndex((int) $token[0]);
-					$obj->setContent($token[1]);
-					$obj->setLineNum($token[2]);
-					$obj->resolveName($obj->getIndex());
-					break;
-				case is_string($token):
-					$obj->setContent($token);
-					break;
-			}
-			$result[] = $obj;
-		}
-		return $result;
+		return file($this->path[$this->position]);
 	}
 
 	/**

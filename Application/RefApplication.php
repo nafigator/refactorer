@@ -25,8 +25,8 @@ class RefApplication extends BaseApplication
 		$bar = new CliProgressBar(count($this->getParser()));
 		$i   = 0;
 
-		foreach ($this->getParser() as $path => $tokens) {
-			$this->getAnalyzer()->process($path, $tokens);
+		foreach ($this->getParser() as $path => $code_array) {
+			$this->getAnalyzer()->process($path, $code_array);
 			$bar->update(++$i);
 		}
 	}

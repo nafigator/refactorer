@@ -19,8 +19,11 @@ namespace Classes;
  */
 class Analyzer extends BaseAnalyzer
 {
-	public function process($path, array $tokens)
+	public function process($path, array $code_strings)
 	{
-		//TODO Analyze tokens
+		$new_code = $this->getInterpreter()->interpret($code_strings);
+		$content = implode('', $new_code);
+
+		file_put_contents($path, $content);
 	}
 }
