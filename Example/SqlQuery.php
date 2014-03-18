@@ -25,10 +25,8 @@ class SqlQuery implements iInterpreter
 	 */
 	public function interpret(array $code)
 	{
-		var_dump($code);
+//		var_dump($code);
 
 		return $code;
 	}
 }
-
-return new SqlQuery;

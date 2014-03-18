@@ -20,6 +20,9 @@ use Veles\Tools\CliProgressBar;
  */
 class RefApplication extends BaseApplication
 {
+	/**
+	 * Creates progress bar and run analyzer on each file in path
+	 */
 	public function run()
 	{
 		$interpreters_count	= count($this->getAnalyzer()->getInterpreters());
