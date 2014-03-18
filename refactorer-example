@@ -46,9 +46,9 @@ EOT;
 	die($error);
 }
 
-$interpreter = new SqlQuery();
+$interpreters[] = new SqlQuery();
 
-$analyzer = new Analyzer($interpreter);
+$analyzer = new Analyzer($interpreters);
 $reader   = new FileReader($argv[2], ['php']);
 
 $app = new RefApplication();

@@ -25,7 +25,7 @@ class BaseApplication
 	/**
 	 * Get analyzer object
 	 *
-	 * @return mixed
+	 * @return Analyzer
 	 */
 	public function getAnalyzer()
 	{

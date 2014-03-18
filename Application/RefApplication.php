@@ -22,7 +22,9 @@ class RefApplication extends BaseApplication
 {
 	public function run()
 	{
-		$bar = new CliProgressBar(count($this->getReader()));
+		$interpreters_count	= count($this->getAnalyzer()->getInterpreters());
+		$files_count		= count($this->getReader());
+		$bar = new CliProgressBar($interpreters_count * $files_count);
 		$i   = 0;
 
 		foreach ($this->getReader() as $path => $code_array) {

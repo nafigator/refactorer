@@ -24,16 +24,16 @@ class BaseAnalyzer
 	 */
 	protected $reader;
 	/**
-	 * @var array
+	 * @var Analyzer[]
 	 */
-	protected $interpreter;
+	protected $interpreters;
 
 	/**
-	 * @param iInterpreter $interpreter
+	 * @param array $interpreter
 	 */
-	public function __construct(iInterpreter $interpreter)
+	public function __construct(array $interpreter)
 	{
-		$this->setInterpreter($interpreter);
+		$this->setInterpreters($interpreter);
 	}
 
 	/**
@@ -59,20 +59,20 @@ class BaseAnalyzer
 	/**
 	 * Get rules array
 	 *
-	 * @return iInterpreter
+	 * @return Analyzer[]
 	 */
-	public function getInterpreter()
+	public function getInterpreters()
 	{
-		return $this->interpreter;
+		return $this->interpreters;
 	}
 
 	/**
 	 * Set rules array
 	 *
-	 * @param iInterpreter $interpreter
+	 * @param array $interpreter
 	 */
-	public function setInterpreter(iInterpreter $interpreter)
+	public function setInterpreters(array $interpreter)
 	{
-		$this->interpreter = $interpreter;
+		$this->interpreters = $interpreter;
 	}
 }
