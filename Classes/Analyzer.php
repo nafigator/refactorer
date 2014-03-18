@@ -19,9 +19,9 @@ namespace Classes;
  */
 class Analyzer extends BaseAnalyzer
 {
-	public function process($path, array $code_strings)
+	public function process($path, array $code_array)
 	{
-		$new_code = $this->getInterpreter()->interpret($code_strings);
+		$new_code = $this->getInterpreter()->interpret($code_array);
 		$content = implode('', $new_code);
 
 		file_put_contents($path, $content);

@@ -23,7 +23,7 @@
 use Veles\AutoLoader;
 use Application\RefApplication;
 use Classes\Analyzer;
-use Classes\Parser;
+use Classes\FileReader;
 
 define('BASE_PATH', realpath(__DIR__));
 
@@ -46,10 +46,10 @@ EOT;
 }
 
 /** @noinspection PhpIncludeInspection */
-$analyzer = new Analyzer(include $argv[1]);
-$parser   = new Parser($argv[2], ['php']);
+$analyzer = new Analyzer(new $argv[1]);
+$reader   = new FileReader($argv[2], ['php']);
 
 $app = new RefApplication();
-$app->setParser($parser);
+$app->setReader($reader);
 $app->setAnalyzer($analyzer);
 $app->run();

@@ -1,7 +1,7 @@
 <?php
 /**
- * Class Parser
- * @file    Parser.php
+ * Class FileReader
+ * @file    FileReader.php
  *
  * PHP version 5.4+
  *
@@ -15,11 +15,11 @@ use Iterator;
 use Countable;
 
 /**
- * Class Parser
+ * Class FileReader
  *
  * @author  Yancharuk Alexander <alex@itvault.info>
  */
-class Parser implements Iterator, Countable
+class FileReader implements Iterator, Countable
 {
 	/**
 	 * @var array
@@ -38,7 +38,7 @@ class Parser implements Iterator, Countable
 		$this->origin_path = $path;
 
 		if (is_file($path) && is_readable($path)) {
-			$this->path = [$path];
+			$this->path[] = $path;
 		} elseif (is_dir($path) && is_readable($path) && is_executable($path)) {
 			$iterator = new \RecursiveIteratorIterator(
 				new \RecursiveDirectoryIterator($path)

@@ -13,12 +13,12 @@
 namespace Application;
 
 use Classes\Analyzer;
-use Classes\Parser;
+use Classes\FileReader;
 
 class BaseApplication
 {
-	/* @var Parser */
-	protected $parser;
+	/* @var FileReader */
+	protected $reader;
 	/* @var Analyzer */
 	protected $analyzer;
 
@@ -47,18 +47,18 @@ class BaseApplication
 	 *
 	 * @return mixed
 	 */
-	public function getParser()
+	public function getReader()
 	{
-		return $this->parser;
+		return $this->reader;
 	}
 
 	/**
 	 * Set parser object
 	 *
-	 * @param mixed $parser
+	 * @param FileReader $reader
 	 */
-	public function setParser(Parser $parser)
+	public function setReader(FileReader $reader)
 	{
-		$this->parser = $parser;
+		$this->reader = $reader;
 	}
 }

@@ -22,10 +22,10 @@ class RefApplication extends BaseApplication
 {
 	public function run()
 	{
-		$bar = new CliProgressBar(count($this->getParser()));
+		$bar = new CliProgressBar(count($this->getReader()));
 		$i   = 0;
 
-		foreach ($this->getParser() as $path => $code_array) {
+		foreach ($this->getReader() as $path => $code_array) {
 			$this->getAnalyzer()->process($path, $code_array);
 			$bar->update(++$i);
 		}

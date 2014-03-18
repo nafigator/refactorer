@@ -20,9 +20,9 @@ namespace Classes;
 class BaseAnalyzer
 {
 	/**
-	 * @var Parser
+	 * @var FileReader
 	 */
-	protected $parser;
+	protected $reader;
 	/**
 	 * @var array
 	 */
@@ -37,23 +37,23 @@ class BaseAnalyzer
 	}
 
 	/**
-	 * Get parser
+	 * Get reader
 	 *
-	 * @return Parser
+	 * @return FileReader
 	 */
-	public function getParser()
+	public function getReader()
 	{
-		return $this->parser;
+		return $this->reader;
 	}
 
 	/**
-	 * Set parser
+	 * Set file reader
 	 *
-	 * @param Parser $parser
+	 * @param FileReader $reader
 	 */
-	public function setParser(Parser $parser)
+	public function setReader(FileReader $reader)
 	{
-		$this->parser = $parser;
+		$this->reader = $reader;
 	}
 
 	/**

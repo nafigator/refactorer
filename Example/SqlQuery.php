@@ -30,3 +30,5 @@ class SqlQuery implements iInterpreter
 		return $code;
 	}
 }
+
+return new SqlQuery;
