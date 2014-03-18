@@ -22,10 +22,10 @@ class Analyzer extends BaseAnalyzer
 	public function process($path, array $code_array)
 	{
 		foreach ($this->getInterpreters() as $interpreter) {
-			$new_code = $interpreter->interpret($code_array);
-			$content = implode('', $new_code);
-
-			file_put_contents($path, $content);
+			$code_array = $interpreter->interpret($code_array);
 		}
+
+		$content = implode('', $code_array);
+		file_put_contents($path, $content);
 	}
 }
