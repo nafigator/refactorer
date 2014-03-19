@@ -30,6 +30,7 @@ abstract class AbstractProcessHandler
 
 	/**
 	 * Method where code is sequentially processed by all interpreters
+	 *
 	 * @param string $path
 	 * @param array  $code_array
 	 * @return null

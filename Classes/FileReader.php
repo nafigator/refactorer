@@ -24,11 +24,12 @@ class FileReader implements Iterator, Countable
 	/**
 	 * @var array
 	 */
-	private $path;
+	private $path = [];
 	private $origin_path;
 	private $position;
 
 	/**
+	 * Creates paths array from given path
 	 *
 	 * @param string $path
 	 * @param array $extensions
@@ -54,11 +55,9 @@ class FileReader implements Iterator, Countable
 	}
 
 	/**
-	 * (PHP 5 &gt;= 5.0.0)<br/>
-	 * Return the php-tokens from current path
+	 * Return the array with content from current path
 	 *
-	 * @link http://php.net/manual/en/iterator.current.php
-	 * @return Token[]
+	 * @return array
 	 */
 	public function current()
 	{
@@ -66,6 +65,8 @@ class FileReader implements Iterator, Countable
 	}
 
 	/**
+	 * Get origin path
+	 *
 	 * @return string
 	 */
 	public function getOriginPath()
@@ -74,10 +75,8 @@ class FileReader implements Iterator, Countable
 	}
 
 	/**
-	 * (PHP 5 &gt;= 5.0.0)<br/>
 	 * Move forward to next element
 	 *
-	 * @link http://php.net/manual/en/iterator.next.php
 	 * @return void Any returned value is ignored.
 	 */
 	public function next()
@@ -86,10 +85,8 @@ class FileReader implements Iterator, Countable
 	}
 
 	/**
-	 * (PHP 5 &gt;= 5.0.0)<br/>
 	 * Return the key of the current element
 	 *
-	 * @link http://php.net/manual/en/iterator.key.php
 	 * @return string
 	 */
 	public function key()
@@ -98,10 +95,8 @@ class FileReader implements Iterator, Countable
 	}
 
 	/**
-	 * (PHP 5 &gt;= 5.0.0)<br/>
 	 * Checks if current position is valid
 	 *
-	 * @link http://php.net/manual/en/iterator.valid.php
 	 * @return boolean The return value will be casted to boolean and then evaluated.
 	 *       Returns true on success or false on failure.
 	 */
@@ -111,10 +106,8 @@ class FileReader implements Iterator, Countable
 	}
 
 	/**
-	 * (PHP 5 &gt;= 5.0.0)<br/>
 	 * Rewind the Iterator to the first element
 	 *
-	 * @link http://php.net/manual/en/iterator.rewind.php
 	 * @return void Any returned value is ignored.
 	 */
 	public function rewind()
@@ -123,17 +116,12 @@ class FileReader implements Iterator, Countable
 	}
 
 	/**
-	 * (PHP 5 &gt;= 5.1.0)<br/>
 	 * Count elements of an object
 	 *
-	 * @link http://php.net/manual/en/countable.count.php
 	 * @return int The custom count as an integer.
-	 *       </p>
-	 *       <p>
-	 *       The return value is cast to an integer.
 	 */
 	public function count()
 	{
-		return is_array($this->path) ? count($this->path) : 1;
+		return empty($this->path) ? 0 : count($this->path);
 	}
 }

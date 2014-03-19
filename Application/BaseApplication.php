@@ -20,7 +20,7 @@ class BaseApplication
 	/* @var FileReader */
 	protected $reader;
 	/* @var ProcessHandler */
-	protected $analyzer;
+	protected $process;
 
 	/**
 	 * Get analyzer object
@@ -29,17 +29,17 @@ class BaseApplication
 	 */
 	public function getProcessHandler()
 	{
-		return $this->analyzer;
+		return $this->process;
 	}
 
 	/**
 	 * Set analyzer object
 	 *
-	 * @param mixed $analyzer
+	 * @param mixed $process
 	 */
-	public function setProcessHandler(ProcessHandler $analyzer)
+	public function setProcessHandler(ProcessHandler $process)
 	{
-		$this->analyzer = $analyzer;
+		$this->process = $process;
 	}
 
 	/**

@@ -48,10 +48,10 @@ EOT;
 
 $interpreters[] = new SqlQuery();
 
-$analyzer = new ProcessHandler($interpreters);
-$reader   = new FileReader($argv[2], ['php']);
+$process = new ProcessHandler($interpreters);
+$reader  = new FileReader($argv[2], ['php']);
 
 $app = new RefApplication();
 $app->setReader($reader);
-$app->setProcessHandler($analyzer);
+$app->setProcessHandler($process);
 $app->run();
