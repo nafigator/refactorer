@@ -20,10 +20,6 @@ namespace Classes;
 abstract class AbstractProcessHandler
 {
 	/**
-	 * @var FileReader
-	 */
-	protected $reader;
-	/**
 	 * @var iInterpreter[]
 	 */
 	protected $interpreters;
@@ -43,26 +39,6 @@ abstract class AbstractProcessHandler
 	public function __construct(array $interpreters)
 	{
 		$this->setInterpreters($interpreters);
-	}
-
-	/**
-	 * Get reader
-	 *
-	 * @return FileReader
-	 */
-	public function getReader()
-	{
-		return $this->reader;
-	}
-
-	/**
-	 * Set file reader
-	 *
-	 * @param FileReader $reader
-	 */
-	public function setReader(FileReader $reader)
-	{
-		$this->reader = $reader;
 	}
 
 	/**
