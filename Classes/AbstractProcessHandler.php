@@ -1,7 +1,7 @@
 <?php
 /**
- * Class BaseAnalyzer
- * @file    BaseAnalyzer.php
+ * Class AbstractProcessHandler
+ * @file AbstractProcessHandler.php
  *
  * PHP version 5.4+
  *
@@ -13,11 +13,11 @@
 namespace Classes;
 
 /**
- * Class BaseAnalyzer
+ * Class AbstractProcessHandler
  *
  * @author  Yancharuk Alexander <alex@itvault.info>
  */
-class BaseAnalyzer
+class AbstractProcessHandler
 {
 	/**
 	 * @var FileReader

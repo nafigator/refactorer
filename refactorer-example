@@ -22,7 +22,7 @@
 
 use Veles\AutoLoader;
 use Application\RefApplication;
-use Classes\Analyzer;
+use Classes\ProcessHandler;
 use Classes\FileReader;
 use Example\SqlQuery;
 
@@ -48,10 +48,10 @@ EOT;
 
 $interpreters[] = new SqlQuery();
 
-$analyzer = new Analyzer($interpreters);
+$analyzer = new ProcessHandler($interpreters);
 $reader   = new FileReader($argv[2], ['php']);
 
 $app = new RefApplication();
 $app->setReader($reader);
-$app->setAnalyzer($analyzer);
+$app->setProcessHandler($analyzer);
 $app->run();

@@ -1,7 +1,7 @@
 <?php
 /**
- * Class Analyzer
- * @file    Analyzer.php
+ * Class ProcessHandler
+ * @file    ProcessHandler.php
  *
  * PHP version 5.4+
  *
@@ -13,11 +13,11 @@
 namespace Classes;
 
 /**
- * Class Analyzer
+ * Class ProcessHandler
  *
  * @author  Yancharuk Alexander <alex@itvault.info>
  */
-class Analyzer extends BaseAnalyzer
+class ProcessHandler extends AbstractProcessHandler
 {
 	public function process($path, array $code_array)
 	{
