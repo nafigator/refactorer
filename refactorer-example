@@ -35,7 +35,7 @@ require 'lib/Veles/AutoLoader.php';
 AutoLoader::registerPath(BASE_PATH . '/lib');
 AutoLoader::init();
 
-if ($argc < 3) {
+if ($argc < 2) {
 	$error = <<<EOT
 	refactorer: missing parameters
 
@@ -49,7 +49,7 @@ EOT;
 $interpreters[] = new SqlQuery();
 
 $process = new ProcessHandler($interpreters);
-$reader  = new FileContentReader($argv[2], ['php']);
+$reader  = new FileContentReader($argv[1], ['php']);
 
 $app = new RefApplication();
 $app->setReader($reader);
