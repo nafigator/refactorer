@@ -23,7 +23,7 @@
 use Veles\AutoLoader;
 use Application\RefApplication;
 use Classes\ProcessHandler;
-use Classes\FileReader;
+use Classes\FileContentReader;
 use Example\SqlQuery;
 
 define('BASE_PATH', realpath(__DIR__));
@@ -49,7 +49,7 @@ EOT;
 $interpreters[] = new SqlQuery();
 
 $process = new ProcessHandler($interpreters);
-$reader  = new FileReader($argv[2], ['php']);
+$reader  = new FileContentReader($argv[2], ['php']);
 
 $app = new RefApplication();
 $app->setReader($reader);

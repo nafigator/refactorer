@@ -1,32 +1,28 @@
 <?php
 /**
- * Class FileReader
- * @file    FileReader.php
+ * Class PathReader
+ * @file    PathReader.php
  *
  * PHP version 5.4+
  *
  * @author  Alexander Yancharuk <alex@itvault.info>
- * @date    Tue Mar 4 17:07:51 MSK 2014
+ * @date    Срд Мар 19 12:33:42 2014
  * @copyright The BSD 3-Clause License
  */
 
 namespace Classes;
+
 use Iterator;
 use Countable;
 
-/**
- * Class FileReader
- *
- * @author  Yancharuk Alexander <alex@itvault.info>
- */
-class FileReader implements Iterator, Countable
+class PathReader implements Iterator, Countable
 {
 	/**
 	 * @var array
 	 */
-	private $path = [];
-	private $origin_path;
-	private $position;
+	protected $path = [];
+	protected $origin_path;
+	protected $position;
 
 	/**
 	 * Creates paths array from given path
@@ -55,13 +51,13 @@ class FileReader implements Iterator, Countable
 	}
 
 	/**
-	 * Return the array with content from current path
+	 * Return the current path
 	 *
 	 * @return array
 	 */
 	public function current()
 	{
-		return file($this->path[$this->position]);
+		return $this->path[$this->position];
 	}
 
 	/**
@@ -91,7 +87,7 @@ class FileReader implements Iterator, Countable
 	 */
 	public function key()
 	{
-		return $this->path[$this->position];
+		return $this->position;
 	}
 
 	/**

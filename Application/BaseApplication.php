@@ -13,11 +13,11 @@
 namespace Application;
 
 use Classes\ProcessHandler;
-use Classes\FileReader;
+use Classes\FileContentReader;
 
 class BaseApplication
 {
-	/* @var FileReader */
+	/* @var FileContentReader */
 	protected $reader;
 	/* @var ProcessHandler */
 	protected $process;
@@ -55,9 +55,9 @@ class BaseApplication
 	/**
 	 * Set parser object
 	 *
-	 * @param FileReader $reader
+	 * @param FileContentReader $reader
 	 */
-	public function setReader(FileReader $reader)
+	public function setReader(FileContentReader $reader)
 	{
 		$this->reader = $reader;
 	}
