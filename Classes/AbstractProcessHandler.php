@@ -17,7 +17,7 @@ namespace Classes;
  *
  * @author  Yancharuk Alexander <alex@itvault.info>
  */
-class AbstractProcessHandler
+abstract class AbstractProcessHandler
 {
 	/**
 	 * @var FileReader
@@ -27,6 +27,14 @@ class AbstractProcessHandler
 	 * @var iInterpreter[]
 	 */
 	protected $interpreters;
+
+	/**
+	 * Method where code is sequentially processed by all interpreters
+	 * @param string $path
+	 * @param array  $code_array
+	 * @return null
+	 */
+	abstract public function process($path, array $code_array);
 
 	/**
 	 * @param array $interpreters

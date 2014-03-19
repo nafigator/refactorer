@@ -19,6 +19,13 @@ namespace Classes;
  */
 class ProcessHandler extends AbstractProcessHandler
 {
+	/**
+	 * Method where code is sequentially processed by all interpreters
+	 *
+	 * @param string $path
+	 * @param array  $code_array
+	 * @return null
+	 */
 	public function process($path, array $code_array)
 	{
 		foreach ($this->getInterpreters() as $interpreter) {
