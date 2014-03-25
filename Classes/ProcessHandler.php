@@ -35,6 +35,6 @@ class ProcessHandler extends AbstractProcessHandler
 			}
 		}
 
-		file_put_contents($path, $code);
+		file_put_contents($path, $code->getString());
 	}
 }

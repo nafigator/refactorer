@@ -52,4 +52,9 @@ class Code
 	{
 		// TODO: Implement saveContext() method
 	}
+
+	public function getString()
+	{
+		return implode('', $this->lines);
+	}
 }
