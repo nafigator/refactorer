@@ -23,16 +23,18 @@ class ProcessHandler extends AbstractProcessHandler
 	 * Method where code is sequentially processed by all interpreters
 	 *
 	 * @param string $path
-	 * @param array  $code_array
-	 * @return null
+	 * @param Code  $code
 	 */
-	public function process($path, array $code_array)
+	public function process($path, Code $code)
 	{
-		foreach ($this->getInterpreters() as $interpreter) {
-			$code_array = $interpreter->interpret($code_array);
+		foreach ($this->getHandlers() as $handler) {
+			while ($context = $code->buildContext($handler)) {
+				$expression = $handler->interpret($context);
+
+				$code->saveContext($handler->evaluate($expression));
+			}
 		}
 
-		$content = implode('', $code_array);
-		file_put_contents($path, $content);
+		file_put_contents($path, $code);
 	}
 }

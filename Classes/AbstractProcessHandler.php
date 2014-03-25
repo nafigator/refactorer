@@ -20,44 +20,45 @@ namespace Classes;
 abstract class AbstractProcessHandler
 {
 	/**
-	 * @var iInterpreter[]
+	 * @var iCodeHandler[]
 	 */
-	protected $interpreters;
+	protected $handlers;
 
 	/**
 	 * Method where code is sequentially processed by all interpreters
 	 *
 	 * @param string $path
-	 * @param array  $code_array
-	 * @return null
+	 * @param Code   $code
 	 */
-	abstract public function process($path, array $code_array);
+	abstract public function process($path, Code $code);
+
+
 
 	/**
-	 * @param array $interpreters
+	 * @param array $handlers
 	 */
-	public function __construct(array $interpreters)
+	public function __construct(array $handlers)
 	{
-		$this->setInterpreters($interpreters);
+		$this->setHandlers($handlers);
 	}
 
 	/**
 	 * Get rules array
 	 *
-	 * @return iInterpreter[]
+	 * @return iCodeHandler[]
 	 */
-	public function getInterpreters()
+	public function getHandlers()
 	{
-		return $this->interpreters;
+		return $this->handlers;
 	}
 
 	/**
 	 * Set rules array
 	 *
-	 * @param array $interpreter
+	 * @param array $handlers
 	 */
-	public function setInterpreters(array $interpreter)
+	public function setHandlers(array $handlers)
 	{
-		$this->interpreters = $interpreter;
+		$this->handlers = $handlers;
 	}
 }

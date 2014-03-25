@@ -11,6 +11,7 @@
  */
 
 namespace Application;
+
 use Veles\Tools\CliProgressBar;
 
 /**
@@ -25,13 +26,13 @@ class RefApplication extends BaseApplication
 	 */
 	public function run()
 	{
-		$interpreters_count	= count($this->getProcessHandler()->getInterpreters());
-		$files_count		= count($this->getReader());
-		$bar = new CliProgressBar($interpreters_count * $files_count);
+		$count = count($this->getProcessHandler()->getHandlers())
+			   * count($this->getReader());
+		$bar = new CliProgressBar($count);
 		$i   = 0;
 
-		foreach ($this->getReader() as $path => $code_array) {
-			$this->getProcessHandler()->process($path, $code_array);
+		foreach ($this->getReader() as $path => $code) {
+			$this->getProcessHandler()->process($path, $code);
 			$bar->update(++$i);
 		}
 	}

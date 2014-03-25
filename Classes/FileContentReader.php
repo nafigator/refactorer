@@ -26,7 +26,7 @@ class FileContentReader extends PathReader
 	 */
 	public function current()
 	{
-		return file($this->path[$this->position]);
+		return new Code(file($this->path[$this->position]));
 	}
 
 	/**

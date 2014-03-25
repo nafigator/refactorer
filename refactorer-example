@@ -24,7 +24,7 @@ use Veles\AutoLoader;
 use Application\RefApplication;
 use Classes\ProcessHandler;
 use Classes\FileContentReader;
-use Example\SqlQuery;
+use Example\SqlQueryFunction;
 
 define('BASE_PATH', realpath(__DIR__));
 
@@ -46,9 +46,9 @@ EOT;
 	die($error);
 }
 
-$interpreters[] = new SqlQuery();
+$handlers[] = new SqlQueryFunction();
 
-$process = new ProcessHandler($interpreters);
+$process = new ProcessHandler($handlers);
 $reader  = new FileContentReader($argv[1], ['php']);
 
 $app = new RefApplication();

@@ -22,7 +22,7 @@ class PathReader implements Iterator, Countable
 	 */
 	protected $path = [];
 	protected $origin_path;
-	protected $position;
+	protected $position = 0;
 
 	/**
 	 * Creates paths array from given path
