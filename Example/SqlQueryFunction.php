@@ -12,14 +12,13 @@
 
 namespace Example;
 
+use Classes\AbstractCodeHandler;
 use Classes\Expression;
-use Classes\iCodeHandler;
 use Classes\iToken;
 use Classes\ContextRules;
 
-class SqlQueryFunction implements iCodeHandler
+class SqlQueryFunction extends AbstractCodeHandler
 {
-	protected $context = [];
 	/** @var  ContextRules */
 	protected $rules;
 

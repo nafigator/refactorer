@@ -1,6 +1,6 @@
 <?php
 /**
- * Interface iCodeHandler
+ * Class AbstractCodeHandler
  * @file    iCodeHandler.php
  *
  * PHP version 5.4+
@@ -13,19 +13,21 @@
 namespace Classes;
 
 /**
- * Interface iCodeHandler
+ * Class AbstractCodeHandler
  *
  * @package Classes
  */
-interface iCodeHandler
+abstract class AbstractCodeHandler
 {
+	protected $context = [];
+
 	/**
 	 * Checking token for compliance with the rules
 	 *
 	 * @param iToken $token
 	 * @return bool
 	 */
-	public function checkRules(iToken $token);
+	abstract public function checkRules(iToken $token);
 
 	/**
 	 * Convert tokens into Expression
@@ -33,7 +35,7 @@ interface iCodeHandler
 	 * @param array $tokens
 	 * @return Expression
 	 */
-	public function interpret(array $tokens);
+	abstract public function interpret(array $tokens);
 
 	/**
 	 * Calculate expression
@@ -41,5 +43,13 @@ interface iCodeHandler
 	 * @param Expression $expression
 	 * @return string
 	 */
-	public function evaluate(Expression $expression);
+	abstract public function evaluate(Expression $expression);
+
+	/**
+	 * Get context for further processing
+	 */
+	public function getContext()
+	{
+		return $this->context;
+	}
 }
