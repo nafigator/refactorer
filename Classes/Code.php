@@ -16,8 +16,6 @@ class Code
 {
 	private $lines = [];
 	private $tokens = [];
-	private $position = 0;
-	private $context_line_num = [];
 
 	public function buildTokens()
 	{

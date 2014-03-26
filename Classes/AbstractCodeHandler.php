@@ -21,6 +21,9 @@ abstract class AbstractCodeHandler
 {
 	protected $context = [];
 
+	/** @var  ContextRules */
+	protected $rules;
+
 	/**
 	 * Checking token for compliance with the rules
 	 *
@@ -51,5 +54,15 @@ abstract class AbstractCodeHandler
 	public function getContext()
 	{
 		return $this->context;
+	}
+
+	/**
+	 * Sets context rules
+	 *
+	 * @param ContextRules $rules
+	 */
+	public function setRules(ContextRules $rules)
+	{
+		$this->rules = $rules;
 	}
 }

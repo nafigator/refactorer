@@ -19,9 +19,6 @@ use Classes\ContextRules;
 
 class SqlQueryFunction extends AbstractCodeHandler
 {
-	/** @var  ContextRules */
-	protected $rules;
-
 	/**
 	 * Interprets code
 	 *
@@ -54,21 +51,11 @@ class SqlQueryFunction extends AbstractCodeHandler
 	 */
 	public function checkRules(iToken $token)
 	{
-		// проверяем токен на соответствие начальному токену стека
-		// если токен соответствует первому токену стека, добавляем в контекст, удаляем из стека, ставим флаг, что найдено соответствие в начальном стеке
+		// проверяем токен на соответствие начальному токену очереди
+		// если токен соответствует первому токену очереди, добавляем в контекст, удаляем из стека, ставим флаг, что найдено соответствие в начальном стеке
 		// если след. токен не совпал, обновляем начальный стек
 		// если начальный стек токенов пуст, и нет соответствия первому токену завершающего стека - токен добавляется в контекст.
 
 		return false;
-	}
-
-	/**
-	 * Sets context rules
-	 *
-	 * @param ContextRules $rules
-	 */
-	public function setRules(ContextRules $rules)
-	{
-		$this->rules = $rules;
 	}
 }
