@@ -33,7 +33,7 @@ class Code
 		$this->lines = $lines;
 	}
 
-	public function buildContext(iCodeHandler $handler)
+	public function buildContext(AbstractCodeHandler $handler)
 	{
 		// получаем массив токенов
 		// массив токенов сохраняем в классе Code

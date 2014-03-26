@@ -20,7 +20,7 @@ namespace Classes;
 abstract class AbstractProcessHandler
 {
 	/**
-	 * @var iCodeHandler[]
+	 * @var AbstractCodeHandler[]
 	 */
 	protected $handlers;
 
@@ -45,7 +45,7 @@ abstract class AbstractProcessHandler
 	/**
 	 * Get rules array
 	 *
-	 * @return iCodeHandler[]
+	 * @return AbstractCodeHandler[]
 	 */
 	public function getHandlers()
 	{

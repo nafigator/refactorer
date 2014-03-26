@@ -1,7 +1,7 @@
 <?php
 /**
- * Class iCodeHandler
- * @file    iCodeHandler.php
+ * Class Expression
+ * @file    Expression.php
  *
  * PHP version 5.4+
  *

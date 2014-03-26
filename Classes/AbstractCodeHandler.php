@@ -1,7 +1,7 @@
 <?php
 /**
  * Class AbstractCodeHandler
- * @file    iCodeHandler.php
+ * @file    AbstractCodeHandler.php
  *
  * PHP version 5.4+
  *
