@@ -23,13 +23,13 @@ class Tokenizer
 			$obj = new Token;
 
 			if (is_array($token)) {
-				$index = isset($token[0]) and is_int($token[0])
+				$index = isset($token[0]) && is_int($token[0])
 					? $token[0]
 					: null;
-				$content = isset($token[1]) and is_string($token[1])
+				$content = isset($token[1]) && is_string($token[1])
 					? $token[1]
 					: null;
-				$line_num = isset($token[2]) and is_int($token[2])
+				$line_num = isset($token[2]) && is_int($token[2])
 					? $token[2]
 					: null;
 			} else {

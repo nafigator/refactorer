@@ -39,8 +39,7 @@ class Code
 	 */
 	public function buildContext(AbstractCodeHandler $handler)
 	{
-		// получаем массив токенов
-		// массив токенов сохраняем в классе Code
+		// сохраняем токены в массиве $this->tokens
 		$this->buildTokens();
 		// далее циклично проверяем токены на соответствие паттерну  - название токена и значение
 		foreach ($this->tokens as $token) {
