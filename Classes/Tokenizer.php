@@ -22,9 +22,27 @@ class Tokenizer
 		foreach ($tokens as $token) {
 			$obj = new Token;
 
-			$obj->setIndex(is_int($token[0]) ? $token[0] : null);
-			$obj->setContent(is_string($token[1]) ? $token[1] : null);
-			$obj->setLineNum(is_int($token[2]) ? $token[2] : null);
+			if (is_array($token)) {
+				$index = isset($token[0]) and is_int($token[0])
+					? $token[0]
+					: null;
+				$content = isset($token[1]) and is_string($token[1])
+					? $token[1]
+					: null;
+				$line_num = isset($token[2]) and is_int($token[2])
+					? $token[2]
+					: null;
+			} else {
+				$index = null;
+				$content = is_string($token)
+					? $token
+					: null;
+				$line_num = null;
+			}
+
+			$obj->setIndex($index);
+			$obj->setContent($content);
+			$obj->setLineNum($line_num);
 
 			$result[] = $obj;
 		}

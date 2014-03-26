@@ -33,6 +33,10 @@ class Code
 		$this->lines = $lines;
 	}
 
+	/**
+	 * @param AbstractCodeHandler $handler
+	 * @return array
+	 */
 	public function buildContext(AbstractCodeHandler $handler)
 	{
 		// получаем массив токенов
@@ -45,7 +49,7 @@ class Code
 			if (true === $handler->checkRules($token)) break;
 		}
 
-		return $handler->getContext() ?: false;
+		return $handler->getContext();
 	}
 
 	public function saveContext($context)
