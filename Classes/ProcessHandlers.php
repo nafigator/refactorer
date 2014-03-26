@@ -1,7 +1,7 @@
 <?php
 /**
- * Class ProcessHandler
- * @file    ProcessHandler.php
+ * Class ProcessHandlers
+ * @file    ProcessHandlers.php
  *
  * PHP version 5.4+
  *
@@ -13,11 +13,11 @@
 namespace Classes;
 
 /**
- * Class ProcessHandler
+ * Class ProcessHandlers
  *
  * @author  Yancharuk Alexander <alex@itvault.info>
  */
-class ProcessHandler extends AbstractProcessHandler
+class ProcessHandlers extends AbstractProcessHandlers
 {
 	/**
 	 * Method where code is sequentially processed by all interpreters

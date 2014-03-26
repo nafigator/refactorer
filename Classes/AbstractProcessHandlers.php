@@ -1,7 +1,7 @@
 <?php
 /**
- * Class AbstractProcessHandler
- * @file AbstractProcessHandler.php
+ * Class AbstractProcessHandlers
+ * @file AbstractProcessHandlers.php
  *
  * PHP version 5.4+
  *
@@ -13,11 +13,11 @@
 namespace Classes;
 
 /**
- * Class AbstractProcessHandler
+ * Class AbstractProcessHandlers
  *
  * @author  Yancharuk Alexander <alex@itvault.info>
  */
-abstract class AbstractProcessHandler
+abstract class AbstractProcessHandlers
 {
 	/**
 	 * @var AbstractCodeHandler[]

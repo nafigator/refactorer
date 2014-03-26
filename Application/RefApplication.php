@@ -26,13 +26,13 @@ class RefApplication extends BaseApplication
 	 */
 	public function run()
 	{
-		$count = count($this->getProcessHandler()->getHandlers())
+		$count = count($this->getProcessHandlers()->getHandlers())
 			   * count($this->getReader());
 		$bar = new CliProgressBar($count);
 		$i   = 0;
 
 		foreach ($this->getReader() as $path => $code) {
-			$this->getProcessHandler()->process($path, $code);
+			$this->getProcessHandlers()->process($path, $code);
 			$bar->update(++$i);
 		}
 	}

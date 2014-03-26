@@ -12,22 +12,22 @@
 
 namespace Application;
 
-use Classes\ProcessHandler;
+use Classes\ProcessHandlers;
 use Classes\FileContentReader;
 
 class BaseApplication
 {
 	/* @var FileContentReader */
 	protected $reader;
-	/* @var ProcessHandler */
+	/* @var ProcessHandlers */
 	protected $process;
 
 	/**
 	 * Get analyzer object
 	 *
-	 * @return ProcessHandler
+	 * @return ProcessHandlers
 	 */
-	public function getProcessHandler()
+	public function getProcessHandlers()
 	{
 		return $this->process;
 	}
@@ -37,7 +37,7 @@ class BaseApplication
 	 *
 	 * @param mixed $process
 	 */
-	public function setProcessHandler(ProcessHandler $process)
+	public function setProcessHandlers(ProcessHandlers $process)
 	{
 		$this->process = $process;
 	}
