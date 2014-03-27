@@ -36,7 +36,7 @@ class ContextRules
 	 */
 	public function current()
 	{
-		$this->queue->dequeue();
+		return $this->queue->dequeue();
 	}
 
 	/**
@@ -45,5 +45,10 @@ class ContextRules
 	public function reset()
 	{
 		$this->queue = clone $this->backup;
+	}
+
+	public function isEmpty()
+	{
+		return $this->queue->isEmpty();
 	}
 }

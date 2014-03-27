@@ -15,7 +15,6 @@ namespace Example;
 use Classes\AbstractCodeHandler;
 use Classes\Expression;
 use Classes\iToken;
-use Classes\ContextRules;
 
 class SqlQueryFunction extends AbstractCodeHandler
 {
@@ -29,6 +28,7 @@ class SqlQueryFunction extends AbstractCodeHandler
 	{
 //		var_dump($code);
 
+		$expression = new Expression;
 		return $code;
 	}
 
@@ -51,10 +51,52 @@ class SqlQueryFunction extends AbstractCodeHandler
 	 */
 	public function checkRules(iToken $token)
 	{
-		// проверяем токен на соответствие начальному токену очереди
-		// если токен соответствует первому токену очереди, добавляем в контекст, удаляем из стека, ставим флаг, что найдено соответствие в начальном стеке
-		// если след. токен не совпал, обновляем начальный стек
-		// если начальный стек токенов пуст, и нет соответствия первому токену завершающего стека - токен добавляется в контекст.
+		if ($this->rules->isEmpty()) {
+			return true;
+		}
+
+		$check = (null === $this->next)
+			? $this->rules->current()
+			: $this->next;
+
+		if ('*' === $check->getContent()) {
+			$this->next = $this->rules->current();
+			$this->context[] = $token;
+			return false;
+		}
+
+		// Финальные токены не определены
+		if (null === $this->next) {
+			// Если токен не соответствует токену из очереди делаем ресет
+			if ($token->getIndex() !== $check->getIndex()) {
+				$this->context = [];
+				$this->rules->reset();
+				return false;
+			}
+		} else {
+			// Финальные токены определены, но не соответствуют - доабвляем в контекст
+			if ($token->getIndex() !== $check->getIndex()) {
+				$this->context[] = $token;
+				return false;
+			// Добрались до финальных токенов
+			} else {
+				$this->context[] = $token;
+				$this->next = null;
+				return false;
+			}
+		}
+
+		// Если токен без контента, то сразу добавляем в контекст
+		if (null === $check->getContent()) {
+			$this->context[] = $token;
+			return false;
+		}
+
+		// Если у токена есть контент и он соответствует правилу, добавляем в контекст
+		if ($token->getContent() === $check->getContent()) {
+			$this->context[] = $token;
+			return false;
+		}
 
 		return false;
 	}
