@@ -29,7 +29,6 @@ class ProcessHandlers extends AbstractProcessHandlers
 	{
 		foreach ($this->getHandlers() as $handler) {
 			while ($context = $code->buildContext($handler)) {
-				var_dump($context); exit;
 //				$expression = $handler->interpret($context);
 //
 //				$code->saveContext($handler->evaluate($expression));

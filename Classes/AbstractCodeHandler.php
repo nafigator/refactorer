@@ -103,16 +103,11 @@ abstract class AbstractCodeHandler
 			return false;
 		}
 
-		// Если токен без контента, то сразу добавляем в контекст
-		if (null === $check->getContent()) {
+		// Если у токена есть контент и он соответствует правилу или токен без контента, то сразу добавляем в контекст
+		if ($token->getContent() === $check->getContent()
+			|| null === $check->getContent()
+		) {
 			$this->context[] = $token;
-			return false;
-		}
-
-		// Если у токена есть контент и он соответствует правилу, добавляем в контекст
-		if ($token->getContent() === $check->getContent()) {
-			$this->context[] = $token;
-			return false;
 		}
 
 		return false;
