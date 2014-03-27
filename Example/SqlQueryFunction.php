@@ -28,7 +28,7 @@ class SqlQueryFunction extends AbstractCodeHandler
 	{
 //		var_dump($code);
 
-		$expression = new Expression;
+//		$expression = new Expression;
 		return $code;
 	}
 
@@ -52,38 +52,37 @@ class SqlQueryFunction extends AbstractCodeHandler
 	public function checkRules(iToken $token)
 	{
 		if ($this->rules->isEmpty()) {
+			$this->rules->reset();
 			return true;
 		}
 
-		$check = (null === $this->next)
+		$check = (null === $this->final)
 			? $this->rules->current()
-			: $this->next;
+			: $this->final;
 
 		if ('*' === $check->getContent()) {
-			$this->next = $this->rules->current();
+			$this->final = $this->rules->current();
 			$this->context[] = $token;
 			return false;
 		}
 
 		// Финальные токены не определены
-		if (null === $this->next) {
-			// Если токен не соответствует токену из очереди делаем ресет
-			if ($token->getIndex() !== $check->getIndex()) {
-				$this->context = [];
-				$this->rules->reset();
-				return false;
+		if (null !== $this->final) {
+			// Финальные токены определены - добавляем токен в контекс
+			$this->context[] = $token;
+			// если ещё и совпадает контент - обнуляем финальный токен
+			if ($token->getContent() === $check->getContent()) {
+				$this->final = null;
 			}
-		} else {
-			// Финальные токены определены, но не соответствуют - доабвляем в контекст
-			if ($token->getIndex() !== $check->getIndex()) {
-				$this->context[] = $token;
-				return false;
-			// Добрались до финальных токенов
-			} else {
-				$this->context[] = $token;
-				$this->next = null;
-				return false;
-			}
+
+			return false;
+		}
+
+		// Если токен не соответствует токену из очереди делаем ресет
+		if ($token->getIndex() !== $check->getIndex()) {
+			$this->context = [];
+			$this->rules->reset();
+			return false;
 		}
 
 		// Если токен без контента, то сразу добавляем в контекст

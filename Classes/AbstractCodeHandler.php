@@ -22,7 +22,7 @@ abstract class AbstractCodeHandler
 	protected $context = [];
 
 	// Токен, до совпадения с которым все токены добавляются в контекст
-	protected $next;
+	protected $final;
 
 	/** @var  ContextRules */
 	protected $rules;
