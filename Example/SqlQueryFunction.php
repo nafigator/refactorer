@@ -14,22 +14,21 @@ namespace Example;
 
 use Classes\AbstractCodeHandler;
 use Classes\Expression;
-use Classes\iToken;
 
 class SqlQueryFunction extends AbstractCodeHandler
 {
 	/**
 	 * Interprets code
 	 *
-	 * @param array $code
+	 * @param array $context
 	 * @return array
 	 */
-	public function interpret(array $code)
+	public function interpret(array $context)
 	{
-//		var_dump($code);
+		var_dump($context); exit;
 
 //		$expression = new Expression;
-		return $code;
+		return $context;
 	}
 
 	/**
@@ -42,6 +41,4 @@ class SqlQueryFunction extends AbstractCodeHandler
 	{
 		// TODO: Implement evaluate() method.
 	}
-
-
 }

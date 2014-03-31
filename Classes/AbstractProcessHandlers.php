@@ -32,8 +32,6 @@ abstract class AbstractProcessHandlers
 	 */
 	abstract public function process($path, Code $code);
 
-
-
 	/**
 	 * @param array $handlers
 	 */
