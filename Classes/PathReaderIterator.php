@@ -15,7 +15,7 @@ namespace Classes;
 use Iterator;
 use Countable;
 
-class PathReader implements Iterator, Countable
+class PathReaderIterator implements Iterator, Countable
 {
 	/**
 	 * @var array

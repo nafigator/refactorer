@@ -12,43 +12,52 @@
 
 namespace Application;
 
-use Classes\ProcessHandlers;
 use Classes\FileContentReader;
+use Classes\RulesHandler;
 
 class BaseApplication
 {
 	/* @var FileContentReader */
 	protected $reader;
-	/* @var ProcessHandlers */
-	protected $process;
+
+	/** @var  RulesHandler */
+	protected $rules;
 
 	/**
-	 * Get analyzer object
+	 * Get rules
 	 *
-	 * @return ProcessHandlers
+	 * @throws \Exception
+	 * @return RulesHandler
 	 */
-	public function getProcessHandlers()
+	public function getRulesHandler()
 	{
-		return $this->process;
+		if (null === $this->rules) {
+			throw new \Exception('RulesHandler not set!');
+		}
+		return $this->rules;
 	}
 
 	/**
-	 * Set analyzer object
+	 * Set regex rules for processing
 	 *
-	 * @param mixed $process
+	 * @param RulesHandler $rules
 	 */
-	public function setProcessHandlers(ProcessHandlers $process)
+	public function setRulesHandler(RulesHandler $rules)
 	{
-		$this->process = $process;
+		$this->rules = $rules;
 	}
 
 	/**
 	 * Get parser object
 	 *
+	 * @throws \Exception
 	 * @return mixed
 	 */
 	public function getReader()
 	{
+		if (null === $this->reader) {
+			throw new \Exception('FileReader not set!');
+		}
 		return $this->reader;
 	}
 

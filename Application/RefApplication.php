@@ -22,17 +22,19 @@ use Veles\Tools\CliProgressBar;
 class RefApplication extends BaseApplication
 {
 	/**
-	 * Creates progress bar and run analyzer on each file in path
+	 * Creates progress bar and run replacers on each file in path
 	 */
 	public function run()
 	{
-		$count = count($this->getProcessHandlers()->getHandlers())
-			   * count($this->getReader());
-		$bar = new CliProgressBar($count);
+		$files = $this->getReader();
+		$rules = $this->getRulesHandler();
+
+		$bar = new CliProgressBar(count($rules) * count($files));
 		$i   = 0;
 
-		foreach ($this->getReader() as $path => $code) {
-			$this->getProcessHandlers()->process($path, $code);
+		foreach ($files as $code) {
+			// по каждому из файлов проходимся реплейсером
+			$rules->process($code);
 			$bar->update(++$i);
 		}
 	}

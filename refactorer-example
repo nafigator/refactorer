@@ -9,7 +9,7 @@
  * 2. Modify local settings
  *
  * 3. Run script using command:
- * ./refactorer <path to rules> <path to files>
+ * ./refactorer <path to files>
  *
  * @file    refactorer-example
  *
@@ -20,38 +20,49 @@
  * @copyright The BSD 3-Clause License.
  */
 
+use Classes\RegexRule;
+use Classes\RulesHandler;
 use Veles\AutoLoader;
 use Application\RefApplication;
-use Classes\ProcessHandlers;
 use Classes\FileContentReader;
-use Example\SqlQueryFunction;
 
 define('BASE_PATH', realpath(__DIR__));
 
 setlocale(LC_ALL, 'ru_RU.utf8');
 date_default_timezone_set('Europe/Moscow');
-/** @noinspection PhpIncludeInspection */
+
 require 'lib/Veles/AutoLoader.php';
 AutoLoader::registerPath(BASE_PATH . '/lib');
 AutoLoader::init();
 
-if ($argc < 2) {
+if ($argc < 1) {
 	$error = <<<EOT
 	refactorer: missing parameters
 
-	USAGE: ./refactorer <path to rules> <path to files>
+	USAGE: ./refactorer <path to files>
 
 EOT;
 
 	die($error);
 }
 
-$handlers[] = new SqlQueryFunction();
+$rule = new RegexRule;
 
-$process = new ProcessHandlers($handlers);
+$pattern = <<<EOF
+Place here your pattern
+EOF;
+$replacement = <<<EOF
+Place here your replacement text
+EOF;
+
+$rule->setPattern($pattern);
+$rule->setReplacement($replacement);
+
 $reader  = new FileContentReader($argv[1], ['php']);
+$handler = new RulesHandler;
+$handler->addRule($rule);
 
-$app = new RefApplication();
+$app = new RefApplication;
 $app->setReader($reader);
-$app->setProcessHandlers($process);
+$app->setRulesHandler($handler);
 $app->run();

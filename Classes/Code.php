@@ -14,46 +14,51 @@ namespace Classes;
 
 class Code
 {
-	private $lines = [];
-	private $tokens = [];
+	/** @var string */
+	private $code;
+	/** @var  string */
+	private $path;
 
-	public function buildTokens()
+	public function __construct($path = null)
 	{
-		if (!empty($this->tokens)) {
-			return $this->tokens;
+		if (null !== $path) {
+			$this->code = file_get_contents($path);
+			$this->path = $path;
 		}
-
-		$this->tokens = Tokenizer::buildTokens($this->lines);
 	}
 
-	public function __construct(array $lines)
+	public function setString($string)
 	{
-		$this->lines = $lines;
-	}
-
-	/**
-	 * @param AbstractCodeHandler $handler
-	 * @return array
-	 */
-	public function buildContext(AbstractCodeHandler $handler)
-	{
-		// сохраняем токены в массиве $this->tokens
-		$this->buildTokens();
-		// далее циклично проверяем токены на соответствие паттерну  - название токена и значение
-		foreach ($this->tokens as $token) {
-			if (true === $handler->checkRules($token)) break;
-		}
-
-		return $handler->getContext();
-	}
-
-	public function saveContext($context)
-	{
-		// TODO: Implement saveContext() method
+		$this->code = $string;
 	}
 
 	public function getString()
 	{
-		return implode('', $this->lines);
+		return $this->code ?: '';
+	}
+
+	public function save()
+	{
+		return file_put_contents($this->getPath(), $this->getString());
+	}
+
+	/**
+	 * Get path to file
+	 *
+	 * @return string
+	 */
+	public function getPath()
+	{
+		return $this->path;
+	}
+
+	/**
+	 * Set path to code file
+	 *
+	 * @param string $path
+	 */
+	public function setPath($path)
+	{
+		$this->path = $path;
 	}
 }

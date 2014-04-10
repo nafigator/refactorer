@@ -17,7 +17,7 @@ namespace Classes;
  *
  * @author  Yancharuk Alexander <alex@itvault.info>
  */
-class FileContentReader extends PathReader
+class FileContentReader extends PathReaderIterator
 {
 	/**
 	 * Return the array with content from current path
@@ -26,7 +26,7 @@ class FileContentReader extends PathReader
 	 */
 	public function current()
 	{
-		return new Code(file($this->path[$this->position]));
+		return new Code($this->path[$this->position]);
 	}
 
 	/**
