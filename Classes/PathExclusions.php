@@ -17,22 +17,46 @@ namespace Classes;
  */
 class PathExclusions
 {
+	/**
+	 * @var array Excluded names
+	 */
 	private $paths = [];
+	/**
+	 * @var array Excluded absolute paths
+	 */
 	private $absolute_paths = [];
 
+	/**
+	 * Set excluded file names
+	 *
+	 * @param array $paths
+	 */
 	public function setPaths(array $paths)
 	{
 		$this->paths = $paths;
 	}
 
+	/**
+	 * Set excluded absolute paths
+	 *
+	 * @param array $paths
+	 */
 	public function setAbsolutePaths(array $paths)
 	{
 		$this->absolute_paths = $paths;
 	}
 
-	public function check($path)
+	/**
+	 * Check
+	 *
+	 * @param $path
+	 * @param $absolute_path
+	 *
+	 * @return bool
+	 */
+	public function check($path, $absolute_path)
 	{
 		return in_array($path, $this->paths)
-			|| in_array($path, $this->absolute_paths);
+			|| in_array($absolute_path, $this->absolute_paths);
 	}
 }

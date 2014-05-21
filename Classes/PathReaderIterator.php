@@ -48,7 +48,9 @@ class PathReaderIterator implements Iterator, Countable
 					continue;
 				}
 
-				if (null !== $exc && $exc->check($path)) {
+				if (null !== $exc
+					&& $exc->check($value->getFilename(), $value->getRealPath())
+				) {
 					continue;
 				}
 
