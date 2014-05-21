@@ -27,10 +27,11 @@ class PathReaderIterator implements Iterator, Countable
 	/**
 	 * Creates paths array from given path
 	 *
-	 * @param string $path
-	 * @param array $extensions
+	 * @param string         $path Dir path
+	 * @param array          $ext
+	 * @param PathExclusions $exc  Exclusions
 	 */
-	public function __construct($path, array $extensions)
+	public function __construct($path, array $ext, PathExclusions $exc = null)
 	{
 		$this->origin_path = $path;
 
@@ -43,9 +44,15 @@ class PathReaderIterator implements Iterator, Countable
 
 			foreach($iterator as $value) {
 				/* @var \SplFileInfo $value */
-				if (in_array($value->getExtension(), $extensions)) {
-					$this->path[] = $value->getRealPath();
+				if (!in_array($value->getExtension(), $ext)) {
+					continue;
 				}
+
+				if (null !== $exc && $exc->check($path)) {
+					continue;
+				}
+
+				$this->path[] = $value->getRealPath();
 			}
 		}
 	}

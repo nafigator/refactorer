@@ -20,6 +20,7 @@
  * @copyright The BSD 3-Clause License.
  */
 
+use Classes\PathExclusions;
 use Classes\RegexRule;
 use Classes\RulesHandler;
 use Veles\AutoLoader;
@@ -58,7 +59,13 @@ EOF;
 $rule->setPattern($pattern);
 $rule->setReplacement($replacement);
 
-$reader  = new FileContentReader($argv[1], ['php']);
+$exclusions = new PathExclusions;
+$exclusions->setPaths(['excluded.file', 'another-excluded.file']);
+$exclusions->setAbsolutePaths([
+	'/example/of/excluded.file',
+	'/path/to/another-excluded.file']
+);
+$reader  = new FileContentReader($argv[1], ['php'], $exclusions);
 $handler = new RulesHandler;
 $handler->addRule($rule);
 
