@@ -26,7 +26,7 @@ class FileContentReader extends PathReaderIterator
 	 */
 	public function current()
 	{
-		return new Code($this->path[$this->position]);
+		return new Content($this->path[$this->position]);
 	}
 
 	/**

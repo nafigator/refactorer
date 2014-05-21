@@ -1,7 +1,7 @@
 <?php
 /**
- * Class Code
- * @file    Code.php
+ * Class Content
+ * @file    Content.php
  *
  * PHP version 5.4+
  *
@@ -12,7 +12,7 @@
 
 namespace Classes;
 
-class Code
+class Content
 {
 	/** @var string */
 	private $code;

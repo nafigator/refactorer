@@ -32,9 +32,9 @@ class RefApplication extends BaseApplication
 		$bar = new CliProgressBar(count($rules) * count($files));
 		$i   = 0;
 
-		foreach ($files as $code) {
+		foreach ($files as $content) {
 			// по каждому из файлов проходимся реплейсером
-			$rules->process($code);
+			$rules->process($content);
 			$bar->update(++$i);
 		}
 	}

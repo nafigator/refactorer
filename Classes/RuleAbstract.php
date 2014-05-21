@@ -54,9 +54,9 @@ abstract class RuleAbstract
 	}
 
 	/**
-	 * @param Code $code
+	 * @param Content $content
 	 *
 	 * @return mixed
 	 */
-	abstract public function process(Code $code);
+	abstract public function process(Content $content);
 }

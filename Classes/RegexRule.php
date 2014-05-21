@@ -37,20 +37,20 @@ class RegexRule extends RuleAbstract
 	}
 
 	/**
-	 * @param Code $code
+	 * @param Content $content
 	 *
 	 * @throws \Exception
 	 * @return mixed
 	 */
-	public function process(Code $code)
+	public function process(Content $content)
 	{
 		$new_code = preg_replace(
-			$this->getPattern(), $this->getReplacement(), $code->getString()
+			$this->getPattern(), $this->getReplacement(), $content->getString()
 		);
 		if (null === $new_code) {
 			throw new \Exception('Function preg_replace returned error!');
 		}
 
-		$code->setString($new_code);
+		$content->setString($new_code);
 	}
 }

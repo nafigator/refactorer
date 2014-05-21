@@ -29,14 +29,14 @@ class RulesHandler
 	/**
 	 * Process code by each rule
 	 *
-	 * @param Code $code
+	 * @param Content $content
 	 */
-	public function process(Code $code)
+	public function process(Content $content)
 	{
 		foreach ($this->rules as $rule) {
-			$rule->process($code);
+			$rule->process($content);
 		}
 
-		$code->save();
+		$content->save();
 	}
 }
