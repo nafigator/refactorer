@@ -47,7 +47,7 @@ EOT;
 	die($error);
 }
 
-$rule = new RegexRule;
+
 
 $pattern = <<<EOF
 Place here your pattern
@@ -56,20 +56,21 @@ $replacement = <<<EOF
 Place here your replacement text
 EOF;
 
-$rule->setPattern($pattern);
-$rule->setReplacement($replacement);
+$rule = new RegexRule;
+$rule->setPattern($pattern)
+	->setReplacement($replacement);
 
 $exclusions = new PathExclusions;
 $exclusions->setPaths(['excluded.file', 'another-excluded.file']);
 $exclusions->setAbsolutePaths([
 	'/example/of/excluded.file',
-	'/path/to/another-excluded.file']
-);
+	'/path/to/another-excluded.file'
+]);
 $reader  = new FileContentReader($argv[1], ['php'], $exclusions);
 $handler = new RulesHandler;
 $handler->addRule($rule);
 
 $app = new RefApplication;
-$app->setReader($reader);
-$app->setRulesHandler($handler);
-$app->run();
+$app->setReader($reader)
+	->setRulesHandler($handler)
+	->run();
