@@ -16,9 +16,14 @@ class Content
 {
 	/** @var string */
 	private $code;
-	/** @var  string */
+	/** @var string */
 	private $path;
 
+	/**
+	 * Read and save content and path into private variables
+	 *
+	 * @param string|null $path
+	 */
 	public function __construct($path = null)
 	{
 		if (null !== $path) {
@@ -27,16 +32,31 @@ class Content
 		}
 	}
 
+	/**
+	 * Set content from string
+	 *
+	 * @param $string
+	 */
 	public function setString($string)
 	{
 		$this->code = $string;
 	}
 
+	/**
+	 * Get content as string
+	 *
+	 * @return string
+	 */
 	public function getString()
 	{
 		return $this->code ?: '';
 	}
 
+	/**
+	 * Save modified content into file
+	 *
+	 * @return int|false
+	 */
 	public function save()
 	{
 		return file_put_contents($this->getPath(), $this->getString());
