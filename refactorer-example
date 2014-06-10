@@ -47,8 +47,6 @@ EOT;
 	die($error);
 }
 
-
-
 $pattern = <<<EOF
 Place here your pattern
 EOF;
