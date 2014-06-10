@@ -22,6 +22,7 @@ class RegexRule extends RuleAbstract
 	 * Sets pattern
 	 *
 	 * @param string $pattern Pattern must be without delimiters
+	 * @return $this
 	 */
 	public function setPattern($pattern)
 	{
@@ -34,6 +35,8 @@ class RegexRule extends RuleAbstract
 		}
 
 		$this->pattern = $pattern;
+
+		return $this;
 	}
 
 	/**

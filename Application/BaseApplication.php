@@ -41,10 +41,13 @@ class BaseApplication
 	 * Set regex rules for processing
 	 *
 	 * @param RulesHandler $rules
+	 * @return $this
 	 */
 	public function setRulesHandler(RulesHandler $rules)
 	{
 		$this->rules = $rules;
+
+		return $this;
 	}
 
 	/**
@@ -65,9 +68,12 @@ class BaseApplication
 	 * Set parser object
 	 *
 	 * @param FileContentReader $reader
+	 * @return $this
 	 */
 	public function setReader(FileContentReader $reader)
 	{
 		$this->reader = $reader;
+
+		return $this;
 	}
 }
